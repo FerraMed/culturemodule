@@ -1,0 +1,1320 @@
+<!doctype html>
+<html lang="ko" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Davan - 다종 세포 순환 배양 장비 | Multi-Cell Circulation System</title>
+    <meta name="description" content="Davan(다반): 인체 생체 환경을 완벽히 모사하는 차세대 다종 세포 순환 배양 장비. Gemini AI 협력 맞춤형 배양 프로토콜 설계." />
+    <meta property="og:title" content="Davan - 다종 세포 순환 배양 장비 | Multi-Cell Circulation System" />
+    <meta property="og:description" content="Davan(다반): 인체 생체 환경을 완벽히 모사하는 차세대 다종 세포 순환 배양 장비. Gemini AI 협력 맞춤형 배양 프로토콜 설계." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN for complete standalone single-file capability -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              davan: {
+                dark: '#071326',
+                deep: '#0A192F',
+                panel: '#0C1E38',
+                cyan: '#00C2D1',
+                cyanHover: '#00ADC0',
+                blue: '#154580',
+              }
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+              mono: ['"JetBrains Mono"', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+      /* 한글 구절/어절 단위 줄바꿈 (Keep-all word & phrase wrapping) */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html, body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        background-color: #071326;
+        color: #ffffff;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      h1, h2, h3, h4, h5, h6, p, span, li, button, a, label, blockquote, dt, dd, td, th {
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      h1, h2, h3 {
+        text-wrap: balance;
+      }
+      p {
+        text-wrap: pretty;
+      }
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      @keyframes pulseSubtle {
+        0%, 100% { opacity: 0.95; transform: scale(1); }
+        50% { opacity: 0.75; transform: scale(1.02); }
+      }
+      .animate-pulse-subtle {
+        animation: pulseSubtle 4s ease-in-out infinite;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      /* Custom fine scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #071326;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1e293b;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00C2D1;
+      }
+    </style>
+  </head>
+  <body class="bg-[#071326] text-white antialiased break-keep selection:bg-[#00C2D1] selection:text-[#071326] relative overflow-x-hidden">
+
+    <!-- ==================== HEADER (GNB) ==================== -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-[#071326]/85 backdrop-blur-md border-b border-white/10 transition-all">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        <div class="flex items-center justify-between h-20">
+          
+          <!-- Left: Logo + Sub-actions -->
+          <div className="flex items-center gap-6 sm:gap-8" style="display: flex; align-items: center; gap: 1.75rem;">
+            <a href="#hero" class="flex items-center gap-2 group">
+              <span class="text-2xl font-black tracking-tight text-white">
+                DAVAN<span class="text-[#00C2D1]">Bio</span>
+              </span>
+            </a>
+
+            <div class="hidden sm:flex items-center gap-5 text-xs font-semibold text-slate-300">
+              <button onclick="openInquiryModal('다종 세포 순환 배양 일반 문의')" class="hover:text-[#00C2D1] transition-colors uppercase tracking-wider text-[11px] cursor-pointer">
+                CONTACT US
+              </button>
+
+              <div class="relative">
+                <button id="langToggleBtn" onclick="toggleLangDropdown()" class="flex items-center gap-1 hover:text-white transition-colors uppercase tracking-wider text-[11px] text-slate-300 cursor-pointer">
+                  <svg class="w-3 h-3 text-[#00C2D1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><line x1="2" y1="12" x2="22" y2="12" stroke-width="2"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke-width="2"/></svg>
+                  <span id="currentLangLabel">KOR</span>
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" stroke-width="2"/></svg>
+                </button>
+
+                <div id="langDropdown" class="hidden absolute left-0 mt-2 w-24 bg-[#0A192F] border border-white/15 rounded-lg shadow-xl py-1 z-50 text-xs">
+                  <button onclick="setLanguage('KOR')" class="w-full px-3 py-1.5 text-left text-[#00C2D1] font-bold hover:bg-white/10 transition-colors">
+                    KOR
+                  </button>
+                  <button onclick="setLanguage('ENG')" class="w-full px-3 py-1.5 text-left text-slate-300 hover:bg-white/10 transition-colors">
+                    ENG
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Nav Links + Hamburger -->
+          <div class="flex items-center gap-6 lg:gap-8">
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-200">
+              <a href="#hero" class="hover:text-[#00C2D1] transition-colors whitespace-nowrap lang-nav-about">회사소개</a>
+              <a href="#technology" class="hover:text-[#00C2D1] transition-colors whitespace-nowrap lang-nav-tech">Cultiverse™ 기술</a>
+              <a href="#pipeline" class="hover:text-[#00C2D1] transition-colors whitespace-nowrap lang-nav-platform">다종 순환 플랫폼</a>
+              <a href="#ai-architect" class="text-[#00C2D1] font-semibold hover:text-cyan-300 transition-colors whitespace-nowrap flex items-center gap-1.5">
+                <span class="lang-nav-ai">AI 배양 설계기</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#00C2D1] animate-pulse"></span>
+              </a>
+              <a href="#news" class="hover:text-[#00C2D1] transition-colors whitespace-nowrap lang-nav-news">뉴스 & PR</a>
+            </nav>
+
+            <button onclick="openMenuDrawer()" class="p-2 text-white hover:text-[#00C2D1] transition-colors cursor-pointer" aria-label="메뉴 열기">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12" stroke-width="2"/><line x1="3" y1="6" x2="21" y2="6" stroke-width="2"/><line x1="3" y1="18" x2="21" y2="18" stroke-width="2"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- ==================== FLOATING RIGHT NAV (PAGINATION DOTS) ==================== -->
+    <aside aria-label="섹션 빠른 이동" class="fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col items-center gap-4 bg-slate-900/60 backdrop-blur-md py-4 px-2 rounded-full border border-white/10 shadow-lg">
+      <button onclick="scrollToSection('hero')" class="group relative flex items-center justify-center p-1.5 cursor-pointer" aria-label="Home 이동">
+        <div id="dot-hero" class="w-5 h-5 bg-[#00C2D1] text-[#071326] rounded-full flex items-center justify-center scale-110 transition-all duration-300 shadow-sm shadow-[#00C2D1]/50">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-width="2"/></svg>
+        </div>
+        <span class="absolute right-8 px-2.5 py-1 text-[11px] font-semibold text-white bg-slate-900/90 border border-white/10 rounded-md opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md">Home</span>
+      </button>
+
+      <button onclick="scrollToSection('pipeline')" class="group relative flex items-center justify-center p-1.5 cursor-pointer" aria-label="Multi-Organ 이동">
+        <div id="dot-pipeline" class="w-2 h-2 bg-white/40 group-hover:bg-white rounded-full transition-all duration-300"></div>
+        <span class="absolute right-8 px-2.5 py-1 text-[11px] font-semibold text-white bg-slate-900/90 border border-white/10 rounded-md opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md">Multi-Organ</span>
+      </button>
+
+      <button onclick="scrollToSection('technology')" class="group relative flex items-center justify-center p-1.5 cursor-pointer" aria-label="Cultiverse 이동">
+        <div id="dot-technology" class="w-2 h-2 bg-white/40 group-hover:bg-white rounded-full transition-all duration-300"></div>
+        <span class="absolute right-8 px-2.5 py-1 text-[11px] font-semibold text-white bg-slate-900/90 border border-white/10 rounded-md opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md">Cultiverse™</span>
+      </button>
+
+      <button onclick="scrollToSection('ai-architect')" class="group relative flex items-center justify-center p-1.5 cursor-pointer" aria-label="Gemini AI 이동">
+        <div id="dot-ai-architect" class="w-2 h-2 bg-white/40 group-hover:bg-white rounded-full transition-all duration-300"></div>
+        <span class="absolute right-8 px-2.5 py-1 text-[11px] font-semibold text-white bg-slate-900/90 border border-white/10 rounded-md opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md">Gemini AI</span>
+      </button>
+
+      <button onclick="scrollToSection('news')" class="group relative flex items-center justify-center p-1.5 cursor-pointer" aria-label="News 이동">
+        <div id="dot-news" class="w-2 h-2 bg-white/40 group-hover:bg-white rounded-full transition-all duration-300"></div>
+        <span class="absolute right-8 px-2.5 py-1 text-[11px] font-semibold text-white bg-slate-900/90 border border-white/10 rounded-md opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md">News</span>
+      </button>
+
+      <button onclick="scrollToSection('contact')" class="group relative flex items-center justify-center p-1.5 cursor-pointer" aria-label="Contact 이동">
+        <div id="dot-contact" class="w-2 h-2 bg-white/40 group-hover:bg-white rounded-full transition-all duration-300"></div>
+        <span class="absolute right-8 px-2.5 py-1 text-[11px] font-semibold text-white bg-slate-900/90 border border-white/10 rounded-md opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 whitespace-nowrap shadow-md">Contact</span>
+      </button>
+    </aside>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+
+      <!-- 1. HERO SECTION -->
+      <section id="hero" class="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-between pt-24 pb-12 overflow-hidden bg-[#071326] text-white">
+        <!-- Background Bio-Cosmos & Central Sphere -->
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,#1B3B6F_0%,#0C2340_35%,#071326_80%)] opacity-95"></div>
+
+          <!-- Central Textured Cell Sphere (Matching reference image) -->
+          <div class="absolute top-[38%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[480px] sm:h-[480px] lg:w-[560px] lg:h-[560px] rounded-full flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full bg-cyan-400/20 blur-[90px] animate-pulse-subtle"></div>
+            <div 
+              class="w-[280px] h-[280px] sm:w-[400px] sm:h-[400px] lg:w-[460px] lg:h-[460px] rounded-full relative shadow-[0_0_100px_rgba(0,194,209,0.35)] overflow-hidden"
+              style="background: radial-gradient(circle at 35% 30%, #7FD8E8 0%, #3080C0 30%, #154580 65%, #0A2045 100%);"
+            >
+              <div 
+                class="absolute inset-0 opacity-40 mix-blend-overlay"
+                style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px), radial-gradient(#00C2D1 1.5px, transparent 1.5px); background-size: 16px 16px; background-position: 0 0, 8px 8px;"
+              ></div>
+              <div class="absolute top-8 left-12 w-32 h-20 rounded-full bg-white/35 blur-xl transform -rotate-25"></div>
+            </div>
+          </div>
+
+          <div class="absolute top-16 left-10 w-48 h-48 rounded-full bg-blue-500/10 blur-[80px]"></div>
+          <div class="absolute bottom-20 right-10 w-64 h-64 rounded-full bg-cyan-500/15 blur-[100px]"></div>
+        </div>
+
+        <!-- Center Headline Content -->
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center my-auto pt-12 sm:pt-16">
+          <div id="heroKicker" class="inline-block mb-3 text-xs font-mono font-medium tracking-[0.25em] text-[#00C2D1] uppercase">
+            DAVAN MULTI-CELL PERFUSION HARDWARE
+          </div>
+
+          <h1 id="heroTitle" class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.12] drop-shadow-md transition-all duration-500">
+            Multi-Cell Circulation<br/>
+            <span class="font-semibold text-white/90">Physiological Bio-Perfusion System</span>
+          </h1>
+
+          <p id="heroDesc" class="mt-6 text-sm sm:text-base md:text-lg text-slate-200/90 max-w-2xl mx-auto leading-relaxed font-light drop-shadow-xs">
+            단일 세포 배양의 한계를 뛰어넘어, 인체 혈류와 장기 간 상호작용을 완벽히 모사하는 Davan 다종 세포 순환 배양 하드웨어
+          </p>
+
+          <div class="mt-8 flex items-center justify-center gap-4">
+            <a href="#ai-architect" class="px-6 py-2.5 bg-gradient-to-r from-[#00C2D1] to-cyan-400 hover:from-[#00ADC0] hover:to-cyan-300 text-[#071326] font-bold rounded-full text-xs tracking-wider uppercase shadow-md transition-all cursor-pointer flex items-center gap-1.5">
+              <span>Gemini AI 배양 설계기</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke-width="2"/></svg>
+            </a>
+            <button onclick="openInquiryModal('다종 세포 순환 배양 장비 도입 문의')" class="px-6 py-2.5 bg-white/10 hover:bg-white/20 border border-white/25 rounded-full text-xs font-semibold tracking-wider text-white uppercase backdrop-blur-sm transition-all hover:border-[#00C2D1] cursor-pointer">
+              Davan 장비 도입 문의
+            </button>
+          </div>
+        </div>
+
+        <!-- Bottom Slider Control (01 02 03 04 + Progress Line + Pause/Play) -->
+        <div class="relative z-10 max-w-4xl mx-auto px-6 w-full pt-8">
+          <div class="flex items-center justify-between gap-4 sm:gap-8 pb-3">
+            <div class="flex-1 grid grid-cols-4 gap-3 sm:gap-6">
+              
+              <button onclick="selectSlide(0)" class="text-left group focus:outline-none cursor-pointer">
+                <div id="slideNum0" class="text-xs sm:text-sm font-mono font-bold text-white transition-colors">01</div>
+                <div class="mt-1.5 h-0.5 w-full bg-white/20 rounded-full overflow-hidden">
+                  <div id="slideBar0" class="h-full bg-white transition-all duration-75" style="width: 0%;"></div>
+                </div>
+              </button>
+
+              <button onclick="selectSlide(1)" class="text-left group focus:outline-none cursor-pointer">
+                <div id="slideNum1" class="text-xs sm:text-sm font-mono font-medium text-slate-400 group-hover:text-slate-200 transition-colors">02</div>
+                <div class="mt-1.5 h-0.5 w-full bg-white/20 rounded-full overflow-hidden">
+                  <div id="slideBar1" class="h-full bg-transparent group-hover:bg-white/40"></div>
+                </div>
+              </button>
+
+              <button onclick="selectSlide(2)" class="text-left group focus:outline-none cursor-pointer">
+                <div id="slideNum2" class="text-xs sm:text-sm font-mono font-medium text-slate-400 group-hover:text-slate-200 transition-colors">03</div>
+                <div class="mt-1.5 h-0.5 w-full bg-white/20 rounded-full overflow-hidden">
+                  <div id="slideBar2" class="h-full bg-transparent group-hover:bg-white/40"></div>
+                </div>
+              </button>
+
+              <button onclick="selectSlide(3)" class="text-left group focus:outline-none cursor-pointer">
+                <div id="slideNum3" class="text-xs sm:text-sm font-mono font-medium text-slate-400 group-hover:text-slate-200 transition-colors">04</div>
+                <div class="mt-1.5 h-0.5 w-full bg-white/20 rounded-full overflow-hidden">
+                  <div id="slideBar3" class="h-full bg-transparent group-hover:bg-white/40"></div>
+                </div>
+              </button>
+
+            </div>
+
+            <!-- Pause / Play Toggle -->
+            <div class="flex items-center gap-2 pl-2">
+              <button id="sliderPlayPauseBtn" onclick="toggleSlidePlay()" class="p-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer" aria-label="재생/일시정지">
+                <svg id="iconPause" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" stroke-width="2"/><rect x="14" y="4" width="4" height="16" stroke-width="2"/></svg>
+                <svg id="iconPlay" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3" stroke-width="2"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. PIPELINE / MULTI-ORGAN SECTION -->
+      <section id="pipeline" class="py-24 sm:py-32 bg-[#F9FAFB] relative overflow-hidden text-slate-900 border-b border-slate-200/80">
+        <!-- Topographic Wave Background -->
+        <div class="absolute -bottom-10 -left-10 w-[450px] h-[300px] pointer-events-none opacity-30">
+          <svg viewBox="0 0 400 300" fill="none" class="w-full h-full stroke-blue-400">
+            <path d="M-50 250 C 100 200, 200 300, 350 150 C 450 50, 500 120, 600 80" stroke-width="1" />
+            <path d="M-50 270 C 120 220, 220 320, 370 170 C 470 70, 520 140, 620 100" stroke-width="1" />
+            <path d="M-50 290 C 140 240, 240 340, 390 190 C 490 90, 540 160, 640 120" stroke-width="1" />
+            <path d="M-50 310 C 160 260, 260 360, 410 210 C 510 110, 560 180, 660 140" stroke-width="1" />
+          </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            <!-- Left Narrative -->
+            <div class="lg:col-span-5 space-y-6">
+              <div class="text-xs font-bold uppercase tracking-widest text-[#008999]">
+                MULTI-ORGAN HARDWARE PLATFORM
+              </div>
+
+              <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A192F] tracking-tight leading-[1.12]">
+                Multi-Cell<br/>Circulation
+              </h2>
+
+              <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+                단일 세포의 정적 배양을 넘어, 체내 장기 축(Organ Axis) 간 혈류 순환과 대사 상호작용을 완벽히 모사하는 Davan 하드웨어
+              </p>
+
+              <div class="pt-2">
+                <button onclick="openInquiryModal('다종 장기 순환 배양 칩 및 장비 상담')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0A192F] hover:text-[#008999] transition-colors group cursor-pointer">
+                  <span>다종 배양 칩 & 하드웨어 규격 문의</span>
+                  <svg class="w-4 h-4 text-[#008999] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke-width="2"/><polyline points="12 5 19 12 12 19" stroke-width="2"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right 2 Cards -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+              
+              <!-- Card 1: 장-간-신장 다종 순환 배양 -->
+              <div onclick="openPipelineModal(1)" class="group relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 aspect-[4/5] bg-slate-900 cursor-pointer border border-slate-200">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background: radial-gradient(circle at 40% 45%, #C92A2A 0%, #8A1515 45%, #4A0808 85%, #250303 100%);">
+                  <svg class="w-full h-full opacity-80" viewBox="0 0 300 380">
+                    <circle cx="230" cy="90" r="50" fill="#FF6B6B" opacity="0.6" />
+                    <circle cx="70" cy="70" r="38" fill="#FF6B6B" opacity="0.5" />
+                    <circle cx="250" cy="280" r="45" fill="#FF6B6B" opacity="0.4" />
+                    <circle cx="150" cy="190" r="85" fill="#E03131" />
+                    <circle cx="125" cy="165" r="75" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="4 6" />
+                  </svg>
+                </div>
+
+                <div class="absolute bottom-6 left-6 right-8 bg-[#154580]/95 backdrop-blur-sm p-4 rounded-lg border border-white/15 text-white shadow-lg transition-transform duration-300 group-hover:-translate-y-1">
+                  <div class="flex items-center gap-1.5 text-xs font-bold tracking-tight">
+                    <span class="text-[#00C2D1]">—</span>
+                    <span>장-간-신장 다종 순환 배양</span>
+                  </div>
+                  <div class="text-[11px] text-slate-200 mt-1 font-light">
+                    인체 1차 흡수 및 간 대사 연계 순환
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: 혈관-뇌 장벽(BBB) & 신경 공배양 -->
+              <div onclick="openPipelineModal(2)" class="group relative rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 aspect-[4/5] bg-[#071326] cursor-pointer border border-slate-200">
+                <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style="background: radial-gradient(circle at 50% 40%, #004D7A 0%, #08203E 50%, #040D1A 100%);">
+                  <svg class="w-full h-full opacity-90" viewBox="0 0 300 380">
+                    <g stroke="rgba(0,194,209,0.7)" stroke-width="2">
+                      <line x1="80" y1="50" x2="220" y2="50" />
+                      <circle cx="80" cy="50" r="5" fill="#00C2D1" />
+                      <circle cx="220" cy="50" r="5" fill="#3B82F6" />
+                      <line x1="120" y1="110" x2="180" y2="110" />
+                      <circle cx="120" cy="110" r="5" fill="#00C2D1" />
+                      <circle cx="180" cy="110" r="5" fill="#3B82F6" />
+                      <line x1="90" y1="170" x2="210" y2="170" />
+                      <circle cx="90" cy="170" r="5" fill="#00C2D1" />
+                      <circle cx="210" cy="170" r="5" fill="#3B82F6" />
+                      <line x1="140" y1="230" x2="160" y2="230" />
+                      <circle cx="140" cy="230" r="5" fill="#00C2D1" />
+                      <circle cx="160" cy="230" r="5" fill="#3B82F6" />
+                      <line x1="70" y1="290" x2="230" y2="290" />
+                      <circle cx="70" cy="290" r="5" fill="#00C2D1" />
+                      <circle cx="230" cy="290" r="5" fill="#3B82F6" />
+                    </g>
+                  </svg>
+                </div>
+
+                <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#040D1A] via-[#040D1A]/70 to-transparent"></div>
+
+                <div class="absolute bottom-6 left-6 right-6 text-white transition-transform duration-300 group-hover:-translate-y-1">
+                  <div class="text-sm font-bold tracking-tight text-white flex items-center justify-between">
+                    <span>혈관-뇌 장벽(BBB) & 신경 공배양</span>
+                    <svg class="w-4 h-4 text-[#00C2D1] opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke-width="2"/><polyline points="12 5 19 12 12 19" stroke-width="2"/></svg>
+                  </div>
+                  <div class="text-[11px] text-cyan-300/80 mt-1">
+                    전단응력 기반 밀착연접 및 약물 투과도 검증
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. PLATFORM HARDWARE TECHNOLOGY (Davan MultiCirc™) -->
+      <section id="technology" class="relative min-h-[580px] lg:min-h-[640px] flex items-center justify-center overflow-hidden bg-[#071326] text-white">
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute inset-0 bg-gradient-to-r from-[#040C18]/90 via-[#071A34]/80 to-[#040C18]/90 z-10"></div>
+          <div class="absolute top-1/3 left-1/4 w-[500px] h-[300px] bg-blue-600/20 blur-[130px] rounded-full"></div>
+          <div class="absolute bottom-1/4 right-1/4 w-[450px] h-[300px] bg-[#00C2D1]/15 blur-[120px] rounded-full"></div>
+        </div>
+
+        <div class="relative z-20 max-w-4xl mx-auto px-6 text-center py-20">
+          <div class="text-xs sm:text-sm font-mono font-medium tracking-[0.25em] text-[#00C2D1] uppercase mb-3">
+            PLATFORM HARDWARE TECHNOLOGY
+          </div>
+
+          <h2 class="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight drop-shadow-md">
+            Cultiverse™
+          </h2>
+
+          <p class="mt-3 text-lg sm:text-xl font-medium text-[#00C2D1] tracking-wide">
+            Innovative Culture Ware
+          </p>
+
+          <p class="mt-2 text-base sm:text-lg text-slate-200 font-light max-w-xl mx-auto leading-relaxed">
+            다종 세포 간 상호작용과 체내 혈류를 완벽히 모사하는 무맥동 순환 배양 장비
+          </p>
+
+          <div class="mt-8">
+            <button onclick="openTechModal()" class="px-8 py-2.5 bg-transparent hover:bg-white/10 text-white font-medium text-xs sm:text-sm tracking-wider uppercase border border-white/40 hover:border-white transition-all duration-300 cursor-pointer shadow-xs hover:shadow-lg">
+              VIEW MORE
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. GEMINI AI PROTOCOL ARCHITECT -->
+      <section id="ai-architect" class="py-20 sm:py-28 bg-[#071326] text-white relative overflow-hidden border-t border-cyan-900/40">
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-blue-600/15 via-[#00C2D1]/15 to-blue-600/15 blur-[140px] pointer-events-none rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+          <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono font-medium tracking-wider uppercase mb-4">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke-width="2"/></svg>
+              <span>Powered by Gemini & Davan Biomedical Engineering</span>
+            </div>
+            
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+              Gemini 협력 다종 세포 순환 배양 설계기
+            </h2>
+
+            <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed font-light max-w-2xl mx-auto">
+              연구하고자 하는 복합 세포군과 실험 목적을 입력하면, Gemini와 Davan 하드웨어 알고리즘이 
+              최적의 <strong class="text-white font-semibold">순환 관류 유량, 전단응력(Shear Stress), 챔버 직/병렬 루프</strong> 및 권장 장비 구성을 실시간 도출합니다.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Console -->
+            <div class="lg:col-span-5 bg-[#0C1E38] border border-cyan-900/50 rounded-2xl p-6 sm:p-7 shadow-xl space-y-6">
+              <div class="flex items-center justify-between pb-3 border-b border-white/10">
+                <div class="flex items-center gap-2 text-sm font-bold text-white">
+                  <svg class="w-4 h-4 text-[#00C2D1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" stroke-width="2"/><rect x="9" y="9" width="6" height="6" stroke-width="2"/><line x1="9" y1="1" x2="9" y2="4" stroke-width="2"/><line x1="15" y1="1" x2="15" y2="4" stroke-width="2"/><line x1="9" y1="20" x2="9" y2="23" stroke-width="2"/><line x1="15" y1="20" x2="15" y2="23" stroke-width="2"/></svg>
+                  <span>실험 조건 입력</span>
+                </div>
+                <span class="text-[11px] font-mono text-cyan-400">Davan MultiCirc™ AI</span>
+              </div>
+
+              <!-- Presets -->
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  추천 배양 모델 템플릿
+                </label>
+                <div class="flex flex-wrap gap-2">
+                  <button type="button" onclick="applyPreset(1)" class="px-2.5 py-1 text-xs rounded-md bg-white/5 hover:bg-cyan-950/60 text-slate-300 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/40 transition-colors">
+                    장-간-신장 대사축
+                  </button>
+                  <button type="button" onclick="applyPreset(2)" class="px-2.5 py-1 text-xs rounded-md bg-white/5 hover:bg-cyan-950/60 text-slate-300 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/40 transition-colors">
+                    혈관-뇌 장벽(BBB) 축
+                  </button>
+                  <button type="button" onclick="applyPreset(3)" class="px-2.5 py-1 text-xs rounded-md bg-white/5 hover:bg-cyan-950/60 text-slate-300 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/40 transition-colors">
+                    종양-면역 상호작용
+                  </button>
+                </div>
+              </div>
+
+              <form onsubmit="handleGenerateProtocol(event)" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1.5">
+                    1. 다종 세포 구성 (Co-Culture Cell Types)
+                  </label>
+                  <input type="text" id="inputCells" required value="간세포(HepG2) + 장상피세포(Caco-2) + 혈관내피세포(HUVEC)" class="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-700 rounded-lg text-xs sm:text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00C2D1]" />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1.5">
+                    2. 연구 목적 (Research Purpose & Endpoint)
+                  </label>
+                  <textarea id="inputPurpose" rows="2" required class="w-full px-3.5 py-2 bg-slate-900/80 border border-slate-700 rounded-lg text-xs sm:text-sm text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00C2D1] resize-none">신약 후보물질 경구 흡수율 및 1차 간 대사 독성 평가</textarea>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1.5">
+                    3. 순환 관류 모드 (Perfusion Mode)
+                  </label>
+                  <select id="inputMode" class="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:ring-2 focus:ring-[#00C2D1]">
+                    <option value="생체 모사 연속 순환류 (Continuous Physiological Perfusion)">생체 모사 연속 순환류 (Continuous Physiological Perfusion)</option>
+                    <option value="인체 혈관 박동류 (Pulsatile Dynamic Flow, 60~80 bpm)">인체 혈관 박동류 (Pulsatile Dynamic Flow, 60~80 bpm)</option>
+                    <option value="주기적 교번 순환류 (Reciprocating / Alternating Flow)">주기적 교번 순환류 (Reciprocating / Alternating Flow)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-slate-300 mb-1.5">
+                    4. 배양 목표 기간 (Target Duration)
+                  </label>
+                  <input type="text" id="inputDuration" value="21일 연속 순환 배양" class="w-full px-3.5 py-2 bg-slate-900/80 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:ring-2 focus:ring-[#00C2D1]" />
+                </div>
+
+                <div class="pt-2">
+                  <button type="submit" id="btnGenProtocol" class="w-full py-3 bg-gradient-to-r from-[#00C2D1] via-cyan-500 to-blue-600 hover:from-[#00ADC0] hover:to-blue-500 text-[#071326] font-bold text-xs sm:text-sm rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer">
+                    <svg class="w-4 h-4 text-[#071326]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke-width="2"/></svg>
+                    <span>Davan AI 순환 배양 프로토콜 도출</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Right Output Stage -->
+            <div id="protocolStage" class="lg:col-span-7 bg-[#08152B] border border-cyan-900/40 rounded-2xl p-6 sm:p-8 shadow-xl min-h-[500px] flex flex-col justify-between">
+              <!-- Initial Idle State -->
+              <div id="protocolIdle" class="my-auto py-12 text-center max-w-md mx-auto space-y-4">
+                <div class="w-16 h-16 rounded-2xl bg-cyan-950/70 border border-cyan-800 text-cyan-400 flex items-center justify-center mx-auto shadow-lg">
+                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke-width="2"/></svg>
+                </div>
+                <h4 class="text-xl font-bold text-white">실험 조건을 입력하고 설계를 시작하세요</h4>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed font-light">
+                  좌측에서 연구 대상 세포군(간, 장, 혈관, 신경, 종양 등)과 목적을 선택하시면 
+                  Davan MultiCirc™ 하드웨어 맞춤형 순환 유속, 전단응력, 챔버 배열을 AI가 즉시 제안합니다.
+                </p>
+                <div class="pt-2">
+                  <button onclick="handleGenerateProtocol(null)" class="px-5 py-2.5 bg-white/10 hover:bg-white/15 border border-white/20 text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer">
+                    기본 장-간-혈관 모델로 프로토콜 시연 보기 &rarr;
+                  </button>
+                </div>
+              </div>
+
+              <!-- Result Container (Hidden initially) -->
+              <div id="protocolResult" class="hidden space-y-6 animate-fadeIn">
+                <div class="pb-4 border-b border-white/10">
+                  <div class="flex items-center justify-between gap-4 mb-1">
+                    <span class="text-xs font-mono font-semibold text-[#00C2D1] uppercase tracking-wider">
+                      DAVAN PROTOCOL ARCHITECT SPECIFICATION
+                    </span>
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-950 text-cyan-300 border border-cyan-800">
+                      AI Verified
+                    </span>
+                  </div>
+                  <h3 id="resProtocolName" class="text-xl sm:text-2xl font-black text-white"></h3>
+                  <p id="resProtocolSummary" class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed"></p>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div class="p-3 bg-[#0C1E38] rounded-xl border border-white/5">
+                    <div class="text-[10px] font-mono text-slate-400">RECOMMENDED FLOW</div>
+                    <div id="resFlowRate" class="text-lg font-mono font-bold text-[#00C2D1] mt-0.5">15.5 µL/min</div>
+                  </div>
+                  <div class="p-3 bg-[#0C1E38] rounded-xl border border-white/5">
+                    <div class="text-[10px] font-mono text-slate-400">SHEAR STRESS</div>
+                    <div id="resShearStress" class="text-lg font-mono font-bold text-blue-400 mt-0.5">1.2 dyn/cm²</div>
+                  </div>
+                  <div class="p-3 bg-[#0C1E38] rounded-xl border border-white/5">
+                    <div class="text-[10px] font-mono text-slate-400">PRESSURE RANGE</div>
+                    <div id="resPressure" class="text-lg font-mono font-bold text-emerald-400 mt-0.5">120~250 mbar</div>
+                  </div>
+                  <div class="p-3 bg-[#0C1E38] rounded-xl border border-white/5">
+                    <div class="text-[10px] font-mono text-slate-400">PERFUSION STABILITY</div>
+                    <div class="text-lg font-mono font-bold text-white mt-0.5">CV &lt; 0.1%</div>
+                  </div>
+                </div>
+
+                <!-- Circulation Topology -->
+                <div>
+                  <div class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-[#00C2D1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2" stroke-width="2"/><polyline points="2 17 12 22 22 17" stroke-width="2"/><polyline points="2 12 12 17 22 12" stroke-width="2"/></svg>
+                    <span>다종 챔버 순환 루프 시퀀스 (Circulation Topology)</span>
+                  </div>
+                  <div id="resLoopList" class="space-y-2"></div>
+                </div>
+
+                <!-- Hardware Modules -->
+                <div>
+                  <div class="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2"/></svg>
+                    <span>권장 Davan 하드웨어 모듈</span>
+                  </div>
+                  <div id="resHwList" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300"></div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div class="text-xs text-slate-400">생성된 프로토콜에 맞춘 정밀 장비 구성 및 견적 산출이 가능합니다.</div>
+                  <button type="button" onclick="applyProtocolToInquiry()" class="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-[#00C2D1] to-blue-600 hover:from-[#00ADC0] hover:to-blue-500 text-[#071326] font-bold text-xs rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+                    <span>이 프로토콜로 Davan 장비 견적 문의</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" stroke-width="2"/><polyline points="12 5 19 12 12 19" stroke-width="2"/></svg>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. NEWS & MEDIA SECTION -->
+      <section id="news" class="relative py-24 sm:py-32 bg-[#071326] text-white overflow-hidden border-t border-slate-800">
+        <div class="max-w-5xl mx-auto px-6 sm:px-8 relative z-20">
+          <div class="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
+            <div class="text-sm font-mono font-bold tracking-[0.2em] text-white uppercase">NEWS</div>
+            <button onclick="openArchiveModal()" class="text-xs font-mono tracking-wider text-slate-400 hover:text-[#00C2D1] transition-colors flex items-center gap-1 cursor-pointer">
+              <span>VIEW MORE</span>
+              <span>+</span>
+            </button>
+          </div>
+
+          <div class="divide-y divide-white/10">
+            <!-- News 1 -->
+            <div class="py-5 sm:py-6 group transition-colors">
+              <div onclick="toggleNews(1)" class="flex items-center justify-between gap-4 sm:gap-8 cursor-pointer">
+                <div class="flex items-center gap-4 sm:gap-6 shrink-0">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-white/10 text-slate-200 border border-white/15">News</span>
+                  <span class="text-xs sm:text-sm font-mono text-slate-400">2026.02.21</span>
+                </div>
+                <div class="flex-1 text-sm sm:text-base font-medium text-slate-100 group-hover:text-[#00C2D1] transition-colors line-clamp-1">
+                  DAVAN 바이오 1세대 재창업…‘성공신화’ 다시 쓴다
+                </div>
+                <div class="p-1 text-slate-400 group-hover:text-white transition-colors shrink-0">
+                  <span id="newsIcon1" class="text-lg font-mono">+</span>
+                </div>
+              </div>
+              <div id="newsDetail1" class="hidden mt-4 pt-3 pl-0 sm:pl-32 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 animate-fadeIn">
+                <p>국내 굴지의 바이오벤처 성공 경험을 보유한 연구진이 결집하여, 기존 항암제의 한계를 극복하는 혁신 신약(First-in-Class) 연구개발을 본격화하며 시장의 뜨거운 주목을 받고 있습니다.</p>
+              </div>
+            </div>
+
+            <!-- News 2 -->
+            <div class="py-5 sm:py-6 group transition-colors">
+              <div onclick="toggleNews(2)" class="flex items-center justify-between gap-4 sm:gap-8 cursor-pointer">
+                <div class="flex items-center gap-4 sm:gap-6 shrink-0">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-white/10 text-slate-200 border border-white/15">News</span>
+                  <span class="text-xs sm:text-sm font-mono text-slate-400">2026.02.21</span>
+                </div>
+                <div class="flex-1 text-sm sm:text-base font-medium text-slate-100 group-hover:text-[#00C2D1] transition-colors line-clamp-1">
+                  한국파스퇴르연구소 스타트업 기업 입주식 개최
+                </div>
+                <div class="p-1 text-slate-400 group-hover:text-white transition-colors shrink-0">
+                  <span id="newsIcon2" class="text-lg font-mono">+</span>
+                </div>
+              </div>
+              <div id="newsDetail2" class="hidden mt-4 pt-3 pl-0 sm:pl-32 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 animate-fadeIn">
+                <p>파스퇴르연구소의 글로벌 오픈 이노베이션 인프라 및 최첨단 스크리닝 플랫폼을 활용하여 신약 후보물질 도출 및 감염성·난치성 질환 타깃 검증에 박차를 가합니다.</p>
+              </div>
+            </div>
+
+            <!-- News 3 -->
+            <div class="py-5 sm:py-6 group transition-colors">
+              <div onclick="toggleNews(3)" class="flex items-center justify-between gap-4 sm:gap-8 cursor-pointer">
+                <div class="flex items-center gap-4 sm:gap-6 shrink-0">
+                  <span class="px-3 py-1 rounded-full text-[11px] font-medium bg-white/10 text-slate-200 border border-white/15">News</span>
+                  <span class="text-xs sm:text-sm font-mono text-slate-400">2026.01.15</span>
+                </div>
+                <div class="flex-1 text-sm sm:text-base font-medium text-slate-100 group-hover:text-[#00C2D1] transition-colors line-clamp-1">
+                  다종 장기 순환 배양 MultiCirc™ 4-Ch 신제품 출시 및 전임상 유효성 데이터 발표
+                </div>
+                <div class="p-1 text-slate-400 group-hover:text-white transition-colors shrink-0">
+                  <span id="newsIcon3" class="text-lg font-mono">+</span>
+                </div>
+              </div>
+              <div id="newsDetail3" class="hidden mt-4 pt-3 pl-0 sm:pl-32 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/5 animate-fadeIn">
+                <p>간-장-신장 3중 장기 순환 배양에서 30일간 세포 생존율 98.5% 및 생체 모사 약동학(ADME) 재현성 검증 결과를 발표했습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer id="contact" class="bg-[#050E1B] text-slate-400 border-t border-white/10 text-xs">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 py-12 sm:py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 pb-10 border-b border-white/5">
+          <div class="lg:col-span-5 space-y-1.5">
+            <div class="font-mono font-bold text-white uppercase tracking-wider text-[11px]">ADDRESS.</div>
+            <div class="text-slate-300 leading-relaxed text-xs">
+              (우) 13605, 경기도 성남시 분당구 돌마로 172 분당서울대학교병원 헬스케어 혁신파크 2층 H2233호
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 space-y-1.5">
+            <div class="font-mono font-bold text-white uppercase tracking-wider text-[11px]">TEL.</div>
+            <div class="font-mono text-slate-300 text-xs">070-7014-2154</div>
+          </div>
+
+          <div class="lg:col-span-2 space-y-1.5">
+            <div class="font-mono font-bold text-white uppercase tracking-wider text-[11px]">FAX.</div>
+            <div class="font-mono text-slate-300 text-xs">050-4188-2154</div>
+          </div>
+
+          <div class="lg:col-span-3 space-y-1.5">
+            <div class="font-mono font-bold text-white uppercase tracking-wider text-[11px]">EMAIL</div>
+            <div class="font-mono text-[#00C2D1] text-xs">
+              <a href="mailto:info@davanbio.com" class="hover:underline">info@davanbio.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 font-mono">
+          <div>(C) 2026. DAVAN Inc. All rights reserved.</div>
+          <div class="flex items-center gap-6">
+            <span class="hover:text-slate-300 cursor-pointer">개인정보처리방침</span>
+            <span class="hover:text-slate-300 cursor-pointer">이용약관</span>
+            <span class="hover:text-slate-300 cursor-pointer">윤리경영</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- 1. Pipeline Detail Modal -->
+    <div id="pipelineModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
+      <div class="relative w-full max-w-lg bg-white text-slate-900 rounded-2xl shadow-2xl p-6 sm:p-8 border border-slate-200">
+        <button onclick="closePipelineModal()" class="absolute top-5 right-5 p-1 text-slate-400 hover:text-slate-800 rounded-lg cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke-width="2"/><line x1="6" y1="6" x2="18" y2="18" stroke-width="2"/></svg>
+        </button>
+        <div class="flex items-center gap-2 text-xs font-bold text-[#008999] uppercase tracking-wider mb-2">
+          <span>PIPELINE SPECIFICATION</span>
+        </div>
+        <h3 id="pipeModalTitle" class="text-2xl font-black text-[#0A192F] mb-4"></h3>
+        <div class="space-y-4 text-sm text-slate-600">
+          <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+            <div class="text-xs font-semibold text-slate-500 mb-0.5">분자 표적 / 기전 모델</div>
+            <div id="pipeModalTarget" class="font-mono font-bold text-slate-900"></div>
+          </div>
+          <div>
+            <div class="text-xs font-semibold text-slate-500 mb-1">작용 기전 (Mechanism of Action)</div>
+            <p id="pipeModalMech" class="leading-relaxed text-slate-700"></p>
+          </div>
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <div class="p-3 bg-slate-50 rounded-lg">
+              <div class="text-xs font-semibold text-slate-500">연구 개발 단계</div>
+              <div id="pipeModalStage" class="font-semibold text-slate-900 mt-0.5"></div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-lg">
+              <div class="text-xs font-semibold text-slate-500">주요 적응증</div>
+              <div id="pipeModalInd" class="font-semibold text-slate-900 mt-0.5"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+          <span class="text-xs text-slate-500">자세한 프로토콜은 상담 신청 시 제공됩니다.</span>
+          <button onclick="inquireFromPipeline()" class="px-4 py-2 bg-[#0A192F] text-white text-xs font-bold rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
+            기술 협력 문의
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Platform Tech Modal -->
+    <div id="techModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-sm">
+      <div class="relative w-full max-w-2xl bg-[#0A192F] text-white rounded-2xl shadow-2xl p-6 sm:p-8 border border-white/15">
+        <button onclick="closeTechModal()" class="absolute top-5 right-5 p-1 text-slate-400 hover:text-white rounded-lg cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke-width="2"/><line x1="6" y1="6" x2="18" y2="18" stroke-width="2"/></svg>
+        </button>
+        <div class="flex items-center gap-2 text-xs font-mono font-semibold text-[#00C2D1] uppercase tracking-wider mb-2">
+          <span>HARDWARE SPECIFICATION</span>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-black text-white mb-2">Cultiverse™ : Innovative Culture Ware 4대 핵심 아키텍처</h3>
+        <p class="text-sm text-slate-300 mb-6 leading-relaxed">
+          Cultiverse™는 단일 세포 정적 배양의 한계를 극복하고, 간, 장, 혈관, 면역세포 등 최대 8종의 세포 챔버를 마이크로플루이딕 루프로 연결하여 실제 인체 혈류와 장기 간 대사 신호 전달을 재현하는 고정밀 바이오 혁신 배양 장비(Culture Ware)입니다.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+            <div class="text-xs font-bold text-white mb-1">01. 무맥동 정밀 순환</div>
+            <p class="text-[11px] text-slate-400 leading-relaxed">100% 무맥동 공압 제어로 세포막 손상 없이 1~50 µL/min 제어</p>
+          </div>
+          <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+            <div class="text-xs font-bold text-white mb-1">02. 실시간 인라인 TEER</div>
+            <p class="text-[11px] text-slate-400 leading-relaxed">챔버 개폐 없이 혈관/장 장벽 전기저항(TEER)을 연속 자동 측정</p>
+          </div>
+          <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+            <div class="text-xs font-bold text-white mb-1">03. 무기포 자동 배출</div>
+            <p class="text-[11px] text-slate-400 leading-relaxed">특허받은 미세기포 트랩으로 30일 이상 장기 연속 무중단 순환 보장</p>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span class="text-xs text-slate-400">Davan 한국 데모 랩에서 장비 실물 시연 및 파일럿 테스트 가능</span>
+          <button onclick="closeTechModal(); openInquiryModal('Davan MultiCirc 장비 시연 데모 신청');" class="w-full sm:w-auto px-5 py-2.5 bg-[#00C2D1] hover:bg-[#00ADC0] text-[#071326] text-xs font-bold rounded-lg cursor-pointer">
+            장비 시연(Demo) 신청하기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Full-screen Menu Drawer -->
+    <div id="menuDrawer" class="hidden fixed inset-0 z-50 bg-[#071326]/95 backdrop-blur-xl text-white flex-col justify-between p-6 sm:p-12 overflow-y-auto">
+      <div class="flex items-center justify-between max-w-7xl mx-auto w-full border-b border-white/10 pb-6">
+        <div class="text-2xl font-black tracking-tight">DAVAN<span class="text-[#00C2D1]">Bio</span></div>
+        <button onclick="closeMenuDrawer()" class="p-2 text-slate-400 hover:text-white cursor-pointer">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke-width="2"/><line x1="6" y1="6" x2="18" y2="18" stroke-width="2"/></svg>
+        </button>
+      </div>
+
+      <div class="max-w-7xl mx-auto w-full my-auto py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div class="space-y-4">
+          <div class="text-xs font-mono font-bold text-[#00C2D1] uppercase tracking-widest">01. ABOUT</div>
+          <h3 class="text-2xl font-bold">회사 소개</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><button onclick="closeMenuDrawer(); scrollToSection('hero');" class="hover:text-[#00C2D1] text-left">기업 비전 & 핵심 가치</button></li>
+          </ul>
+        </div>
+        <div class="space-y-4">
+          <div class="text-xs font-mono font-bold text-[#00C2D1] uppercase tracking-widest">02. TECHNOLOGY</div>
+          <h3 class="text-2xl font-bold">Cultiverse™ 기술</h3>
+          <p class="text-xs text-[#00C2D1]">Innovative Culture Ware</p>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><button onclick="closeMenuDrawer(); scrollToSection('technology');" class="hover:text-[#00C2D1] text-left">무맥동 순환 배양 기술</button></li>
+          </ul>
+        </div>
+        <div class="space-y-4">
+          <div class="text-xs font-mono font-bold text-[#00C2D1] uppercase tracking-widest">03. AI ARCHITECT</div>
+          <h3 class="text-2xl font-bold">Gemini AI 배양 설계</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><button onclick="closeMenuDrawer(); scrollToSection('ai-architect');" class="hover:text-[#00C2D1] text-left">AI 맞춤형 프로토콜 설계</button></li>
+          </ul>
+        </div>
+        <div class="space-y-4">
+          <div class="text-xs font-mono font-bold text-[#00C2D1] uppercase tracking-widest">04. CONTACT</div>
+          <h3 class="text-2xl font-bold">문의 & 제휴</h3>
+          <ul class="space-y-2 text-sm text-slate-300">
+            <li><button onclick="closeMenuDrawer(); openInquiryModal('연구 제휴 및 장비 견적');" class="hover:text-[#00C2D1] text-left text-[#00C2D1] font-semibold">장비 견적 및 데모 신청 &rarr;</button></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto w-full pt-6 border-t border-white/10 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>(우) 13605, 경기도 성남시 분당구 돌마로 172 분당서울대학교병원 헬스케어 혁신파크 2층 H2233호</div>
+        <div class="font-mono text-slate-300">TEL: 070-7014-2154 | EMAIL: info@davanbio.com</div>
+      </div>
+    </div>
+
+    <!-- 4. Quick Inquiry Modal (Replaces raw forms) -->
+    <div id="inquiryModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <div onclick="closeInquiryModal()" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm"></div>
+
+      <div class="relative w-full max-w-2xl bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200 overflow-hidden z-10">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-[#0A192F] via-[#0C2340] to-[#0A192F] text-white px-6 py-5 flex items-center justify-between border-b border-cyan-900/40">
+          <div>
+            <div class="flex items-center gap-2 text-cyan-400 text-xs font-semibold tracking-wider uppercase mb-1">
+              <span>DAVAN 바이오 혁신 기술 지원</span>
+            </div>
+            <h3 class="text-xl font-bold tracking-tight text-white">전문 기술 상담 및 도입 문의</h3>
+          </div>
+          <button onclick="closeInquiryModal()" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-white/10 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke-width="2"/><line x1="6" y1="6" x2="18" y2="18" stroke-width="2"/></svg>
+          </button>
+        </div>
+
+        <!-- Form Body -->
+        <div class="p-6 sm:p-8">
+          <div id="inquirySuccess" class="hidden text-center py-8">
+            <div class="w-16 h-16 bg-cyan-50 border border-cyan-200 rounded-full flex items-center justify-center mx-auto mb-4 text-cyan-600">
+              <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2"/><polyline points="22 4 12 14.01 9 11.01" stroke-width="2"/></svg>
+            </div>
+            <h4 class="text-2xl font-bold text-slate-900 mb-2">문의가 성공적으로 접수되었습니다</h4>
+            <p class="text-slate-600 text-sm max-w-md mx-auto mb-6 leading-relaxed">
+              <span id="succName" class="font-semibold text-slate-800"></span> 연구원님, 접수해 주신 내용은 DAVAN 전문 연구 엔지니어팀이 24시간 이내에 분석하여 최적의 하드웨어 구성안 및 견적서를 회신드리겠습니다.
+            </p>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-left text-xs text-slate-700 max-w-md mx-auto space-y-2 mb-6">
+              <div class="flex justify-between">
+                <span class="text-slate-500">접수 번호</span>
+                <span id="succCode" class="font-mono font-semibold text-slate-900"></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-500">신청 분야</span>
+                <span id="succApp" class="font-medium text-slate-900"></span>
+              </div>
+            </div>
+            <button onclick="closeInquiryModal()" class="px-6 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
+              확인 완료
+            </button>
+          </div>
+
+          <form id="inquiryForm" onsubmit="handleInquirySubmit(event)" class="space-y-6">
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">문의 목적</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" onclick="setInqType(this, 'quote')" class="inq-type-btn py-2 px-3 text-xs font-medium rounded-lg border border-cyan-500 bg-cyan-50/50 text-cyan-900 font-semibold text-center cursor-pointer">
+                  하드웨어 견적 요청
+                </button>
+                <button type="button" onclick="setInqType(this, 'demo')" class="inq-type-btn py-2 px-3 text-xs font-medium rounded-lg border border-slate-200 text-slate-600 hover:border-slate-300 text-center cursor-pointer">
+                  장비 시연(Demo) 신청
+                </button>
+                <button type="button" onclick="setInqType(this, 'tech')" class="inq-type-btn py-2 px-3 text-xs font-medium rounded-lg border border-slate-200 text-slate-600 hover:border-slate-300 text-center cursor-pointer">
+                  배양 프로토콜 자문
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">연구 응용 분야</label>
+              <select id="inqApp" class="w-full px-3.5 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                <option value="Davan MultiCirc™ 다종 세포 순환 배양 장비">Davan MultiCirc™ 다종 세포 순환 배양 장비</option>
+                <option value="다종 장기 공배양 칩 (Gut-Liver-Kidney / BBB)">다종 장기 공배양 칩 (Gut-Liver-Kidney / BBB)</option>
+                <option value="실시간 인라인 TEER 전기저항 센서 모듈">실시간 인라인 TEER 전기저항 센서 모듈</option>
+                <option value="Gemini AI 순환 배양 프로토콜 맞춤 컨설팅">Gemini AI 순환 배양 프로토콜 맞춤 컨설팅</option>
+                <option value="맞춤형 바이오 OEM 장비 개발">맞춤형 바이오 OEM 장비 개발</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1.5">성함 / 직책 *</label>
+                <input type="text" id="inqName" required placeholder="홍길동 책임연구원" class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1.5">소속 기관 / 기업명 *</label>
+                <input type="text" id="inqOrg" required placeholder="한국생명공학연구원 / 바이오텍" class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1.5">이메일 주소 *</label>
+                <input type="email" id="inqEmail" required placeholder="researcher@institute.re.kr" class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1.5">연락처</label>
+                <input type="tel" id="inqPhone" placeholder="010-0000-0000" class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">실험 요구 사양 및 문의 상세</label>
+              <textarea id="inqNotes" rows="3" placeholder="예: 간-장-신장 3중 세포 순환 배양을 위한 4채널 펌프와 TEER 실시간 센서 견적 문의" class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none"></textarea>
+            </div>
+
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-100">
+              <p class="text-xs text-slate-500">입력하신 정보는 상담 및 견적 회신 목적으로만 취급됩니다.</p>
+              <div class="flex items-center gap-3 w-full sm:w-auto">
+                <button type="button" onclick="closeInquiryModal()" class="px-4 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg cursor-pointer">취소</button>
+                <button type="submit" class="px-6 py-2 text-xs font-semibold text-white bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 rounded-lg shadow-sm cursor-pointer">상담 신청하기</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== COMPLETE JAVASCRIPT ==================== -->
+    <script>
+      // 1. Hero Slider Logic
+      const slides = [
+        {
+          id: '01',
+          kicker: 'DAVAN MULTI-CELL PERFUSION HARDWARE',
+          title: 'Multi-Cell Circulation<br/><span class="font-semibold text-white/90">Physiological Bio-Perfusion System</span>',
+          desc: '단일 세포 배양의 한계를 뛰어넘어, 인체 혈류와 장기 간 상호작용을 완벽히 모사하는 Davan 다종 세포 순환 배양 하드웨어'
+        },
+        {
+          id: '02',
+          kicker: 'HARDWARE INNOVATION',
+          title: 'Davan MultiCirc™ Platform<br/><span class="font-semibold text-white/90">Synchronized Pulseless Flow</span>',
+          desc: '간·장·혈관·면역세포 등 최대 8개 조직 챔버의 무맥동 연속 관류 및 실시간 인라인 TEER 저항 모니터링'
+        },
+        {
+          id: '03',
+          kicker: 'GEMINI AI COLLABORATION',
+          title: 'Gemini AI Bio-Architect<br/><span class="font-semibold text-white/90">Intelligent Protocol Design</span>',
+          desc: '연구 대상 세포군과 약물 스크리닝 목적에 맞춰 유속, 전단응력(Shear Stress), 순환 시퀀스를 Gemini AI가 실시간 설계'
+        },
+        {
+          id: '04',
+          kicker: 'IN VITRO TRANSLATION',
+          title: 'Zero-Bubble Fluidic Architecture<br/><span class="font-semibold text-white/90">Long-term 30-Day Viability</span>',
+          desc: '특허받은 미세기포 자동 배출 트랩과 생체 적합성 매니폴드로 30일 이상 무중단 장기 연속 순환 배양 보장'
+        }
+      ];
+
+      let currentSlide = 0;
+      let isPlaying = true;
+      let slideProgress = 0;
+      let slideTimer = null;
+
+      function renderSlide() {
+        const s = slides[currentSlide];
+        document.getElementById('heroKicker').innerText = s.kicker;
+        document.getElementById('heroTitle').innerHTML = s.title;
+        document.getElementById('heroDesc').innerText = s.desc;
+
+        for (let i = 0; i < 4; i++) {
+          const numEl = document.getElementById('slideNum' + i);
+          const barEl = document.getElementById('slideBar' + i);
+          if (i === currentSlide) {
+            numEl.className = 'text-xs sm:text-sm font-mono font-bold text-white transition-colors';
+            barEl.className = 'h-full bg-white transition-all duration-75';
+            barEl.style.width = slideProgress + '%';
+          } else {
+            numEl.className = 'text-xs sm:text-sm font-mono font-medium text-slate-400 group-hover:text-slate-200 transition-colors';
+            barEl.className = 'h-full bg-transparent group-hover:bg-white/40';
+            barEl.style.width = '0%';
+          }
+        }
+      }
+
+      function startSlider() {
+        if (slideTimer) clearInterval(slideTimer);
+        slideTimer = setInterval(() => {
+          if (!isPlaying) return;
+          slideProgress += 1;
+          if (slideProgress > 100) {
+            slideProgress = 0;
+            currentSlide = (currentSlide + 1) % slides.length;
+          }
+          renderSlide();
+        }, 60);
+      }
+
+      function selectSlide(idx) {
+        currentSlide = idx;
+        slideProgress = 0;
+        renderSlide();
+      }
+
+      function toggleSlidePlay() {
+        isPlaying = !isPlaying;
+        document.getElementById('iconPause').classList.toggle('hidden', !isPlaying);
+        document.getElementById('iconPlay').classList.toggle('hidden', isPlaying);
+      }
+
+      // 2. Scroll Spy for Floating Nav
+      const sectionIds = ['hero', 'pipeline', 'technology', 'ai-architect', 'news', 'contact'];
+      window.addEventListener('scroll', () => {
+        const scrollPos = window.scrollY + 260;
+        for (const id of sectionIds) {
+          const el = document.getElementById(id);
+          if (el) {
+            const top = el.offsetTop;
+            const h = el.offsetHeight;
+            if (scrollPos >= top && scrollPos < top + h) {
+              updateFloatingNav(id);
+              break;
+            }
+          }
+        }
+      }, { passive: true });
+
+      function updateFloatingNav(activeId) {
+        sectionIds.forEach(id => {
+          const dot = document.getElementById('dot-' + id);
+          if (!dot) return;
+          if (id === activeId) {
+            dot.className = 'w-5 h-5 bg-[#00C2D1] text-[#071326] rounded-full flex items-center justify-center scale-110 shadow-sm shadow-[#00C2D1]/50 transition-all';
+          } else {
+            dot.className = 'w-2 h-2 bg-white/40 group-hover:bg-white rounded-full transition-all';
+          }
+        });
+      }
+
+      function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // 3. Language Toggle
+      let currentLang = 'KOR';
+      function toggleLangDropdown() {
+        document.getElementById('langDropdown').classList.toggle('hidden');
+      }
+      function setLanguage(lang) {
+        currentLang = lang;
+        document.getElementById('currentLangLabel').innerText = lang;
+        document.getElementById('langDropdown').classList.add('hidden');
+      }
+
+      // 4. Pipeline Details
+      const pipelineData = {
+        1: {
+          title: '장-간-신장 다종 장기 대사 순환 배양 (Gut-Liver-Kidney Axis)',
+          target: 'Intestinal Absorption, Hepatic Metabolism & Renal Clearance',
+          mech: '장관 상피세포층을 통과한 약물이 간 실질세포로 순환 유입되어 1차 대사를 거치고, 대사산물이 신장 세포로 전달되는 인체 체내 약동학(ADME) 전 과정을 하나의 폐루프 순환 칩에서 모사합니다.',
+          stage: 'Commercial Hardware Validation / GLP Pilot',
+          ind: '신약 후보물질 경구 흡수율 평가, 간독성/신독성 스크리닝, 프로드러그 활성화'
+        },
+        2: {
+          title: '혈관-뇌 장벽(BBB) & 뇌신경 미세환경 공배양 (Neurovascular Unit)',
+          target: 'Endothelial Tight Junctions & Astrocyte-Neuron Signaling',
+          mech: '혈류 전단응력(Shear Stress 1.5 dyn/cm²)이 가해지는 미세혈관 내피세포와 성상교세포, 신경세포를 삼중 공배양하여 인체 혈뇌장벽의 생리학적 밀착연접(TEER > 1,500 Ω·cm²)을 체외 재현합니다.',
+          stage: 'Standardized In Vitro Assay Protocol',
+          ind: '퇴행성 뇌질환 신약 투과도, 뇌종양 표적 약물 전달체, 중추신경계 독성 평가'
+        }
+      };
+
+      let activePipelineId = 1;
+      function openPipelineModal(id) {
+        activePipelineId = id;
+        const d = pipelineData[id];
+        document.getElementById('pipeModalTitle').innerText = d.title;
+        document.getElementById('pipeModalTarget').innerText = d.target;
+        document.getElementById('pipeModalMech').innerText = d.mech;
+        document.getElementById('pipeModalStage').innerText = d.stage;
+        document.getElementById('pipeModalInd').innerText = d.ind;
+        document.getElementById('pipelineModal').classList.remove('hidden');
+      }
+      function closePipelineModal() {
+        document.getElementById('pipelineModal').classList.add('hidden');
+      }
+      function inquireFromPipeline() {
+        closePipelineModal();
+        const d = pipelineData[activePipelineId];
+        openInquiryModal(d.title + ' 프로토콜 및 장비 문의');
+      }
+
+      // 5. Tech Modal
+      function openTechModal() {
+        document.getElementById('techModal').classList.remove('hidden');
+      }
+      function closeTechModal() {
+        document.getElementById('techModal').classList.add('hidden');
+      }
+
+      // 6. Menu Drawer
+      function openMenuDrawer() {
+        document.getElementById('menuDrawer').classList.remove('hidden');
+        document.getElementById('menuDrawer').classList.add('flex');
+      }
+      function closeMenuDrawer() {
+        document.getElementById('menuDrawer').classList.add('hidden');
+        document.getElementById('menuDrawer').classList.remove('flex');
+      }
+
+      // 7. News Accordion
+      function toggleNews(id) {
+        const detail = document.getElementById('newsDetail' + id);
+        const icon = document.getElementById('newsIcon' + id);
+        if (detail.classList.contains('hidden')) {
+          detail.classList.remove('hidden');
+          icon.innerText = '-';
+        } else {
+          detail.classList.add('hidden');
+          icon.innerText = '+';
+        }
+      }
+      function openArchiveModal() {
+        openInquiryModal('공식 보도자료 및 프레스킷 자료 요청');
+      }
+
+      // 8. Gemini AI Protocol Architect
+      let lastGeneratedProtocol = null;
+      function applyPreset(idx) {
+        if (idx === 1) {
+          document.getElementById('inputCells').value = '장상피(Caco-2) + 간세포(Hepatocytes) + 신장세포(HEK293)';
+          document.getElementById('inputPurpose').value = '약물 흡수-대사-배설(ADME) 동시 평가';
+          document.getElementById('inputMode').value = '생체 모사 연속 순환류 (Continuous Physiological Perfusion)';
+          document.getElementById('inputDuration').value = '21일 연속 순환 배양';
+        } else if (idx === 2) {
+          document.getElementById('inputCells').value = '뇌미세혈관내피(BMEC) + 별아교세포(Astrocytes) + 신경세포(Neurons)';
+          document.getElementById('inputPurpose').value = '중추신경계 약물 투과율 및 신경 독성 검증';
+          document.getElementById('inputMode').value = '생체 모사 연속 순환류 (Continuous Physiological Perfusion)';
+          document.getElementById('inputDuration').value = '14일 연속 순환 배양';
+        } else if (idx === 3) {
+          document.getElementById('inputCells').value = '종양 오가노이드(Tumor) + 혈관내피 + 세포독성 T세포(CD8+ T-cells)';
+          document.getElementById('inputPurpose').value = '면역항암제 침투율 및 종양 살상 효능 실시간 추적';
+          document.getElementById('inputMode').value = '인체 혈관 박동류 (Pulsatile Dynamic Flow, 60~80 bpm)';
+          document.getElementById('inputDuration').value = '10일 연속 순환 배양';
+        }
+      }
+
+      async function handleGenerateProtocol(e) {
+        if (e) e.preventDefault();
+        const cells = document.getElementById('inputCells').value;
+        const purpose = document.getElementById('inputPurpose').value;
+        const mode = document.getElementById('inputMode').value;
+        const duration = document.getElementById('inputDuration').value;
+
+        const btn = document.getElementById('btnGenProtocol');
+        btn.innerHTML = '<span>Gemini AI 프로토콜 도출 중...</span>';
+        btn.disabled = true;
+
+        try {
+          const resp = await fetch('/api/gemini/protocol', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cellTypes: cells, purpose, perfusionMode: mode, duration })
+          });
+          const data = await resp.json();
+          renderProtocolResult(data);
+        } catch (err) {
+          // Robust client-side fallback if offline
+          renderProtocolResult({
+            protocolName: cells + ' 순환 공배양 표준 프로토콜',
+            summary: 'Davan MultiCirc™ 기반 ' + cells + '의 체내 모사 동시 순환을 위한 최적화된 유체역학 파라미터입니다.',
+            flowRateRecommendation: {
+              flowRate: '15.5 µL/min',
+              shearStress: '1.2 dyn/cm²',
+              pressureRange: '120 ~ 250 mbar'
+            },
+            circulationLoop: [
+              { step: 1, chamber: '배지 저장조 & 가스 교환 챔버', role: '용존산소(pO2) 및 37℃ 생체 항상성 유지' },
+              { step: 2, chamber: '장/혈관 내피세포 장벽 챔버', role: 'TEER 실시간 저항 모니터링 및 투과도 측정' },
+              { step: 3, chamber: '간 실질세포 대사 챔버', role: 'CYP450 효소 활성 및 1차 대사산물 생성' },
+              { step: 4, chamber: '표적 조직 챔버', role: '약물 대사체 독성 및 세포 반응성 평가' }
+            ],
+            hardwareConfig: [
+              'Davan MultiCirc™ 4-Ch 마이크로플루이딕 순환 컨트롤러',
+              '무기포(Bubble-Free) 자동 트랩 시스템',
+              '실시간 인라인 TEER 전기저항 센서 유닛',
+              '인큐베이터 내장형 컴팩트 도킹 스테이션'
+            ]
+          });
+        } finally {
+          btn.innerHTML = '<svg class="w-4 h-4 text-[#071326]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke-width="2"/></svg><span>Davan AI 순환 배양 프로토콜 도출</span>';
+          btn.disabled = false;
+        }
+      }
+
+      function renderProtocolResult(data) {
+        lastGeneratedProtocol = data;
+        document.getElementById('protocolIdle').classList.add('hidden');
+        document.getElementById('protocolResult').classList.remove('hidden');
+
+        document.getElementById('resProtocolName').innerText = data.protocolName;
+        document.getElementById('resProtocolSummary').innerText = data.summary;
+        document.getElementById('resFlowRate').innerText = data.flowRateRecommendation?.flowRate || '15 µL/min';
+        document.getElementById('resShearStress').innerText = data.flowRateRecommendation?.shearStress || '1.2 dyn/cm²';
+        document.getElementById('resPressure').innerText = data.flowRateRecommendation?.pressureRange || '120~250 mbar';
+
+        // Loop List
+        const loopList = document.getElementById('resLoopList');
+        loopList.innerHTML = '';
+        (data.circulationLoop || []).forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'flex items-start gap-3 p-2.5 bg-white/5 rounded-lg border border-white/5 text-xs';
+          div.innerHTML = `<span class="w-5 h-5 rounded-full bg-[#00C2D1]/20 text-[#00C2D1] flex items-center justify-center font-mono font-bold text-[10px] shrink-0 mt-0.5">${item.step}</span><div><span class="font-bold text-white">${item.chamber}</span><span class="text-slate-400 ml-2">— ${item.role}</span></div>`;
+          loopList.appendChild(div);
+        });
+
+        // Hardware List
+        const hwList = document.getElementById('resHwList');
+        hwList.innerHTML = '';
+        (data.hardwareConfig || []).forEach(hw => {
+          const div = document.createElement('div');
+          div.className = 'flex items-center gap-2 p-2 bg-white/5 rounded-md';
+          div.innerHTML = `<svg class="w-3.5 h-3.5 text-[#00C2D1] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2"/><polyline points="22 4 12 14.01 9 11.01" stroke-width="2"/></svg><span>${hw}</span>`;
+          hwList.appendChild(div);
+        });
+      }
+
+      function applyProtocolToInquiry() {
+        if (!lastGeneratedProtocol) return;
+        const summary = `[Gemini AI 설계 프로토콜]\n- 프로토콜: ${lastGeneratedProtocol.protocolName}\n- 권장 유량: ${lastGeneratedProtocol.flowRateRecommendation?.flowRate} / 전단응력: ${lastGeneratedProtocol.flowRateRecommendation?.shearStress}\n- 권장 하드웨어: ${(lastGeneratedProtocol.hardwareConfig || []).join(', ')}`;
+        openInquiryModal('Gemini AI 설계 프로토콜 장비 견적 문의', summary);
+      }
+
+      // 9. Quick Inquiry Modal
+      function openInquiryModal(subject, notes) {
+        document.getElementById('inquiryForm').classList.remove('hidden');
+        document.getElementById('inquirySuccess').classList.add('hidden');
+        if (subject) {
+          const select = document.getElementById('inqApp');
+          // Match or set
+          let found = false;
+          for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].value === subject) {
+              select.selectedIndex = i;
+              found = true;
+              break;
+            }
+          }
+          if (!found) {
+            select.selectedIndex = 0;
+          }
+        }
+        if (notes) {
+          document.getElementById('inqNotes').value = notes;
+        }
+        document.getElementById('inquiryModal').classList.remove('hidden');
+      }
+
+      function closeInquiryModal() {
+        document.getElementById('inquiryModal').classList.add('hidden');
+      }
+
+      function setInqType(btn, type) {
+        document.querySelectorAll('.inq-type-btn').forEach(b => {
+          b.className = 'inq-type-btn py-2 px-3 text-xs font-medium rounded-lg border border-slate-200 text-slate-600 hover:border-slate-300 text-center cursor-pointer';
+        });
+        btn.className = 'inq-type-btn py-2 px-3 text-xs font-medium rounded-lg border border-cyan-500 bg-cyan-50/50 text-cyan-900 font-semibold text-center cursor-pointer';
+      }
+
+      function handleInquirySubmit(e) {
+        e.preventDefault();
+        const name = document.getElementById('inqName').value;
+        const app = document.getElementById('inqApp').value;
+        const code = 'DVN-' + Math.floor(100000 + Math.random() * 900000);
+
+        document.getElementById('succName').innerText = name;
+        document.getElementById('succCode').innerText = code;
+        document.getElementById('succApp').innerText = app;
+
+        document.getElementById('inquiryForm').classList.add('hidden');
+        document.getElementById('inquirySuccess').classList.remove('hidden');
+      }
+
+      // Initialize on load
+      window.addEventListener('DOMContentLoaded', () => {
+        renderSlide();
+        startSlider();
+      });
+    </script>
+  </body>
+</html>
